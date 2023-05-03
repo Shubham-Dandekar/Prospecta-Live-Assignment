@@ -1,0 +1,41 @@
+Suppose you have a CSV file with the data below.
+ 
+A1: 5, A2: 7, A3: 9, B1: 3, B2: 8, B3: =4+5, C1: =5+A1, C2: =A2+B2, C3: =C2+B3
+ 
+This can be represented in an excel sheet below:
+ 
+
+
+ 
+
+    A 	  B 	  C
+
+1   5     3    =5+A1
+
+2   7     8    =A2+B2
+
+3   9    =4+5  =C2+B3
+
+
+ 
+I want a program that will take the CSV input above and produce CSV output with the results.  If it is a value, then return a value.  If it is a formula then calculate the formula and return the value of that formula.
+ 
+1. How will you tackle the challenge above?
+Ans:
+	I will be read this file using BufferReader and store it to one String.
+	Then I will create String array by splitting it whenever a comma (,) occurs.
+	I will create a HashMap, then iterate over string array and split (: ) it into two Strings 
+	first will become key and second will become value and store it into HashMap.
+	Then itereate over map and whenever expression occurs at that time evaluate the expression
+	and store the value at that key. If expression contains key then we can call it from HashMap.
+
+2. What type of errors you would you check for?
+Ans:
+	Check for expression format is proper or not.
+
+
+3. How might a user break your code?
+Ans:
+	He can give column key into expressions which may not be exits.
+	He can give improper expression format.
+	He can give improper style of  csv file.
